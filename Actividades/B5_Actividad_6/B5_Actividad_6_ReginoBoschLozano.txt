@@ -1,0 +1,57 @@
+B5_ACTIVIDAD 6 --REGINO BOSCH LOZANO --
+
+17:
+SELECT jugadores.Nombre, estadisticas.temporada, estadisticas.Puntos_por_partido
+FROM jugadores Inner Join estadisticas
+ON jugadores.codigo = estadisticas.jugador
+ORDER BY jugadores.Nombre ASC, estadisticas.Puntos_por_partido DESC
+
+18:
+SELECT jugadores.Nombre, estadisticas.temporada, MIN(estadisticas.Puntos_por_partido)
+FROM jugadores Inner Join estadisticas
+ON jugadores.codigo = estadisticas.jugador
+GROUP BY jugadores.Nombre
+
+19:
+SELECT jugadores.Nombre, estadisticas.temporada, MAX(estadisticas.Puntos_por_partido)
+FROM jugadores Inner Join estadisticas
+ON jugadores.codigo = estadisticas.jugador AND jugadores.Nombre = 'Pau Gasol'
+GROUP BY jugadores.Nombre
+
+20:
+SELECT equipos.Nombre, jugadores.Nombre
+FROM equipos Inner Join jugadores
+ON jugadores.Nombre_equipo = equipos.Nombre
+
+21:
+SELECT equipos.Nombre, jugadores.Nombre
+FROM equipos Inner Join jugadores
+ON jugadores.Nombre_equipo = equipos.Nombre
+WHERE equipos.Nombre = 'Bulls'
+
+22:
+SELECT partidos.equipo_local, partidos.equipo_visitante, partidos.temporada
+FROM partidos 
+WHERE partidos.equipo_local = 'Supersonics ' AND partidos.temporada = '98/99'
+
+23:
+select partidos.equipo_local,count(partidos.equipo_local)as Numero_Partidos
+from partidos
+where partidos.equipo_local = "Supersonics"
+
+24:
+select equipos.nombre, round(avg (jugadores.Altura),2) as Media_Altura_Equipo
+from equipos, jugadores
+where jugadores.Nombre_equipo = equipos.Nombre
+group by equipos.nombre
+
+25:
+select jugadores.Nombre, equipos.Division, equipos.Conferencia
+from jugadores join equipos
+On jugadores.Nombre_equipo = equipos.Nombre
+where jugadores.Procedencia is null
+
+26:
+select jugadores.Nombre
+from jugadores
+where jugadores.Posicion like "%G%"

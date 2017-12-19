@@ -1,0 +1,51 @@
+ACTB5_5 CONSULTAS SQL NBA --- REGINO BOSCH LOZANO
+
+1º:
+Select jugadores.Nombre
+From jugadores
+Where jugadores.Nombre_equipo = 'Lakers'
+
+2º:
+Select jugadores.Nombre
+From jugadores
+Where jugadores.Procedencia = 'Spain' AND jugadores.Nombre_equipo = 'Lakers' 
+
+3º:
+Select jugadores.Nombre
+From jugadores
+Where jugadores.Nombre_equipo = 'Lakers' AND jugadores.Procedencia = 'Spain' OR jugadores.Procedencia = 'Slovenia'
+
+4º:
+Select jugadores.Nombre
+From jugadores
+Where jugadores.Nombre_equipo = 'Lakers' AND jugadores.Procedencia = 'Spain' OR jugadores.Procedencia = 'Slovenia' OR jugadores.Procedencia = 'Serbia'
+
+5º:
+Select jugadores.Nombre, jugadores.Peso, jugadores.Nombre_equipo
+From jugadores
+Where jugadores.Peso >=270 AND jugadores.Peso <=300
+
+6º:
+Select jugadores.Nombre, jugadores.Nombre_equipo
+From jugadores
+Where jugadores.Procedencia IS NULL
+
+7º:
+Select equipos.Nombre, equipos.Conferencia
+From equipos
+where equipos.Nombre LIKE 'R%' AND equipos.Nombre LIKE '%s' AND equipos.Nombre LIKE '_______'
+
+8º:
+Select equipos.Nombre, equipos.Conferencia
+From equipos
+where equipos.Nombre LIKE '_o%' 
+
+9º:
+Select equipos.Nombre
+From equipos
+where equipos.Conferencia ='West'
+ORDER BY equipos.Division ASC
+
+10º:
+Select MAX(jugadores.Peso),jugadores.Nombre
+From jugadores
