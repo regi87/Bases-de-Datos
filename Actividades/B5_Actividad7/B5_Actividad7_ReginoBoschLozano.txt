@@ -1,0 +1,140 @@
+--B5 Actividad 7-- Regino Bosch Lozano
+
+1:
+select personas.NOMBRE
+from personas
+where personas.RUBIA = "S" and personas.ALTA = "S"
+
+2:
+select personas.NOMBRE
+from personas
+where personas.RUBIA = "S" and personas.ALTA = "N" and personas.GAFAS = "S"
+
+3:
+select empleados.NOMBRE
+from empleados
+where empleados.ID_EMPLEADO = 1 or empleados.ID_EMPLEADO = 2 or empleados.ID_EMPLEADO = 4
+
+4:
+1ºFORMA SIN AVG:
+select sum(empleados.SALARIO)/count(empleados.ID_EMPLEADO) as Media_Salarios
+from empleados
+
+2ºFORMA CON AVG:
+select avg(empleados.SALARIO) as Media_Salarios
+from empleados
+
+5:
+select empleados.SEXO,(empleados.ID_EMPLEADO)
+from empleados
+group by empleados.SEXO
+
+6:
+select empleados.SEXO
+from empleados
+group by empleados.SEXO
+
+7:
+select empleados.NOMBRE, empleados.APELLIDOS, empleados.SALARIO
+from empleados
+group by empleados.SALARIO desc
+
+8:
+select empleados.NOMBRE, empleados.APELLIDOS
+from empleados
+where empleados.APELLIDOS like "%AR%"
+
+9:
+select count(mascotas.SEXO) as Total_Perros
+from mascotas
+where mascotas.SEXO = "H" or mascotas.SEXO = "M"
+
+10:
+select mascotas.UBICACION, count(mascotas.ESPECIE)
+from mascotas
+group by mascotas.UBICACION
+
+11:
+select mascotas.UBICACION, count(mascotas.ESPECIE), mascotas.SEXO,count(mascotas.SEXO) 
+from mascotas
+group by mascotas.UBICACION
+
+12:
+select mascotas.NOMBRE, mascotas.ESTADO
+from mascotas
+order by mascotas.ESTADO desc, mascotas.NOMBRE asc
+
+13:
+select Concat("Curso de ", cursos.TITULO," impartido por el profesor ",profesores.NOMBRE," ",profesores.APELLIDOS)as Nombre_Completo
+from cursos
+inner join profesores
+on cursos.ID_CURSO = profesores.ID_PROFE
+
+14:
+select  alumnos.NOMBRE
+from cursos
+inner join alumnos_cursos
+on cursos.ID_CURSO = alumnos_cursos.ID_CURSO
+inner join alumnos
+on alumnos_cursos.ID_ALUMNO = alumnos.ID_ALUMNO
+where alumnos.ID_ALUMNO = 1
+
+15:
+select  alumnos.NOMBRE, alumnos.APELLIDOS, cursos.TITULO
+from cursos
+inner join alumnos_cursos
+on cursos.ID_CURSO = alumnos_cursos.ID_CURSO
+inner join alumnos
+on alumnos_cursos.ID_ALUMNO = alumnos.ID_ALUMNO
+where alumnos.NOMBRE like "%E%"
+
+16:
+select profesores.NOMBRE,cursos.TITULO, count(*)
+from cursos
+inner join  profesores
+on profesores.ID_PROFE = cursos.ID_PROFE
+group by cursos.ID_PROFE
+
+17:
+select cursos.TITULO, alumnos.NOMBRE, count(alumnos.ID_ALUMNO)
+from alumnos
+inner join  alumnos_cursos
+on alumnos_cursos.ID_ALUMNO = alumnos.ID_ALUMNO
+inner join cursos
+on alumnos_cursos.ID_CURSO = cursos.ID_CURSO
+group by cursos.TITULO
+
+18:
+select cursos.TITULO
+from cursos
+
+19:
+select profesores.NOMBRE, cursos.TITULO
+from profesores
+left join cursos
+on profesores.ID_PROFE = cursos.ID_PROFE
+group by profesores.NOMBRE
+
+20:NO ESTA BE:
+update personas
+set personas.RUBIA="Si", personas.RUBIA="NO"
+where personas.RUBIA="S" or personas.RUBIA="N"
+
+21:
+
+22:
+select empleados.NOMBRE
+from empleados
+ WHERE empleados.F_NACIMIENTO < (select max(empleados.F_NACIMIENTO) from empleados)
+ and empleados.F_NACIMIENTO> (select min(empleados.F_NACIMIENTO)from empleados);
+
+23:
+select cursos.TITULO, alumnos.NOMBRE,count(alumnos_cursos.ID_ALUMNO)
+from cursos
+inner join alumnos_cursos
+on cursos.ID_CURSO = alumnos_cursos.ID_CURSO
+inner join alumnos
+on alumnos.ID_ALUMNO = alumnos_cursos.ID_ALUMNO
+where (select count(alumnos_cursos.ID_ALUMNO)from alumnos_cursos)=2
+
+
