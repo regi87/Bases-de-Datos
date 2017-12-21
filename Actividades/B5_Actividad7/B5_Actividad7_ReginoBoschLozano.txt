@@ -115,12 +115,14 @@ left join cursos
 on profesores.ID_PROFE = cursos.ID_PROFE
 group by profesores.NOMBRE
 
-20:NO ESTA BE:
+20:
 update personas
-set personas.RUBIA="Si", personas.RUBIA="NO"
-where personas.RUBIA="S" or personas.RUBIA="N"
+set personas.RUBIA="No", personas.RUBIA="Si"
+where personas.RUBIA="N" or personas.RUBIA ="S"
+
 
 21:
+
 
 22:
 select empleados.NOMBRE
@@ -129,12 +131,13 @@ from empleados
  and empleados.F_NACIMIENTO> (select min(empleados.F_NACIMIENTO)from empleados);
 
 23:
-select cursos.TITULO, alumnos.NOMBRE,count(alumnos_cursos.ID_ALUMNO)
+select cursos.TITULO, alumnos.NOMBRE, count(alumnos_cursos.ID_ALUMNO)
 from cursos
 inner join alumnos_cursos
 on cursos.ID_CURSO = alumnos_cursos.ID_CURSO
 inner join alumnos
 on alumnos.ID_ALUMNO = alumnos_cursos.ID_ALUMNO
-where (select count(alumnos_cursos.ID_ALUMNO)from alumnos_cursos)=2
+group by cursos.TITULO
+having  count(alumnos_cursos.ID_ALUMNO)=2
 
 
