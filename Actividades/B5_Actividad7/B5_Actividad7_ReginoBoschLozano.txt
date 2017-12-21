@@ -116,12 +116,24 @@ on profesores.ID_PROFE = cursos.ID_PROFE
 group by profesores.NOMBRE
 
 20:
-update personas
-set personas.RUBIA="No", personas.RUBIA="Si"
-where personas.RUBIA="N" or personas.RUBIA ="S"
+select personas.NOMBRE,
+case
+	when RUBIA = "S"
+		then "Si"
+		else "No"
+		end 
+from personas
 
 
 21:
+select empleados.NOMBRE ,round(avg(empleados.SALARIO) ,1), 
+case
+	when SEXO = "H"
+		then "HOMBRE"
+		else "MUJER"
+		end 
+from empleados
+group by empleados.NOMBRE
 
 
 22:
