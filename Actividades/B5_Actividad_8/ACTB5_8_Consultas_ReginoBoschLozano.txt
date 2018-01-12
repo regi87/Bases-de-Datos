@@ -1,0 +1,114 @@
+B5 Actividad 8 Regino Bosch Lozano
+
+Ejercicio 1:
+
+select jugador.nombre, jugador.apellido
+from jugador
+where  jugador.posicion = "Pivot"
+
+Ejercicio 2:
+
+select jugador.nombre, equipo.nombre
+from jugador
+inner join equipo
+where jugador.equipo = equipo.id_equipo and equipo.id_equipo != 3
+
+Ejercicio 3:
+
+select *
+from equipo
+where equipo.web = "desconocida" or equipo.web = "nula"
+
+Ejercicio 4:
+
+select *
+from equipo
+where equipo.ciudad != "Valencia" and equipo.ciudad != "Madrid"
+
+Ejercicio 5:
+
+select *
+from partido
+where partido.fecha between '2011-11' and '2011-11-31'
+
+Ejercicio 6:
+
+select jugador.nombre, jugador.apellido, jugador.salario
+from jugador
+where jugador.salario > 100000
+
+
+Ejercicio 7:
+
+select avg(jugador.salario) as Media_Salaria
+from jugador
+
+Ejercicio 8:
+
+select equipo.ciudad,count(equipo.ciudad)
+from equipo
+group by equipo.ciudad
+
+Ejercicio 9:
+
+select jugador.nombre, jugador.apellido, jugador.salario*0.82
+from jugador
+
+Ejercicio 10:
+
+select equipo.nombre, avg(jugador.salario)
+from jugador
+inner join equipo
+where jugador.equipo = equipo.id_equipo
+group by equipo.nombre
+
+Ejercicio 11:
+
+select jugador.nombre, jugador.apellido,jugador.salario
+from jugador
+where jugador.salario > all (Select jugador.salario
+from jugador
+where jugador.apellido ="Gasol")
+
+Ejercicio 12:
+
+select jugador.nombre, jugador.apellido,jugador.salario
+from jugador
+where jugador.salario > all (Select avg(jugador.salario)
+from jugador)
+
+select count(jugador.nombre)
+from jugador
+where jugador.salario > all (Select avg(jugador.salario)
+from jugador)
+
+Ejercicio 13:
+
+select *
+from jugador
+inner join equipo
+where jugador.equipo = equipo.id_equipo and equipo.ciudad = "Zaragoza"
+
+Ejercicio 14:
+
+select *
+from jugador
+inner join equipo
+where jugador.equipo = equipo.id_equipo and jugador.altura > all
+(select avg(jugador.altura) from jugador)
+
+Ejercicio 15:
+
+select *, count(*)
+from equipo
+inner join jugador
+where equipo.id_equipo  = jugador.equipo
+group by equipo.nombre
+having count(*)>5
+
+Ejercicio 16:
+
+select count(jugador.id_jugador) as JUGADORES_MADRID
+from jugador
+inner join equipo
+where jugador.equipo = equipo.id_equipo and equipo.ciudad = "Madrid"
