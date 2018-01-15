@@ -17,7 +17,7 @@ Ejercicio 3:
 
 select *
 from equipo
-where equipo.web = "desconocida" or equipo.web = "nula"
+where equipo.web = null
 
 Ejercicio 4:
 
@@ -29,7 +29,7 @@ Ejercicio 5:
 
 select *
 from partido
-where partido.fecha between '2011-11' and '2011-11-31'
+where partido.fecha between '2011-11-01' and '2011-11-31'
 
 Ejercicio 6:
 
@@ -56,11 +56,12 @@ from jugador
 
 Ejercicio 10:
 
-select equipo.nombre, avg(jugador.salario)
+select equipo.nombre, avg(jugador.salario) as media_salario
 from jugador
 inner join equipo
 where jugador.equipo = equipo.id_equipo
 group by equipo.nombre
+having media_salario >50000
 
 Ejercicio 11:
 
@@ -72,15 +73,11 @@ where jugador.apellido ="Gasol")
 
 Ejercicio 12:
 
-select jugador.nombre, jugador.apellido,jugador.salario
+select jugador.equipo,count(jugador.nombre)
 from jugador
-where jugador.salario > all (Select avg(jugador.salario)
+where jugador.salario > (Select avg(jugador.salario)
 from jugador)
-
-select count(jugador.nombre)
-from jugador
-where jugador.salario > all (Select avg(jugador.salario)
-from jugador)
+group by jugador.equipo
 
 Ejercicio 13:
 
@@ -91,11 +88,12 @@ where jugador.equipo = equipo.id_equipo and equipo.ciudad = "Zaragoza"
 
 Ejercicio 14:
 
-select *
-from jugador
-inner join equipo
-where jugador.equipo = equipo.id_equipo and jugador.altura > all
-(select avg(jugador.altura) from jugador)
+select j2.nombre, j2.equipo
+from jugador j2
+where j2.altura>(select avg(j1.altura)
+					  from jugador j1
+						where j1.equipo = j2.equipo
+						group by j1.equipo)
 
 Ejercicio 15:
 
@@ -112,3 +110,4 @@ select count(jugador.id_jugador) as JUGADORES_MADRID
 from jugador
 inner join equipo
 where jugador.equipo = equipo.id_equipo and equipo.ciudad = "Madrid"
+group by jugador.equipo
