@@ -1,0 +1,66 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14480\viewh8240\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Ejercicio b5_Actividad 10\
+\
+Ejercicio 1:\
+\
+A-falsa\
+B-falsa\
+C-verdadera\
+D-falsa\
+\
+Ejercicio 2:\
+\
+A.verdadera\
+B.verdadera\
+C.verdadera\
+D.falsa\
+E.Se borraria els que no tingen el dni = 2 de ha_estado y opinion.\
+\
+\
+Ejercicio 3:\
+\
+Select cod_pob, nombre\
+From poblaci\'f3n\
+Natural join casa_rural\
+Where  nota_media < 4\
+\
+Ejercicio 4:\
+\
+Select dni, nombre\
+From usuarios\
+Natural join opinion\
+Where cod_cas = (Select *\
+				from casa_rural\
+				where habitaciones > 3 and nota_media >5)\
+\
+Ejercicio 5:\
+\
+Select dni, nombre\
+From usuario\
+Inner join ha_estado\
+Where veces = (select max(veces)\
+			from ha_estado)\
+\
+Ejercicio 6:\
+\
+Select cod_pobl, nombre, count(cod_pobl)\
+From poblaci\'f3n\
+Natural join casa_rural\
+Where cod_pobl = cod_pob\
+\
+Ejercicio 7:\
+\
+Select cod_cas, num_habi\
+From casa_rural\
+Natural join opinion\
+Where nota >= 5\
+\
+Ejercicio 8:\
+\
+}
