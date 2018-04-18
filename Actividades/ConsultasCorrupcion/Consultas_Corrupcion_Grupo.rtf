@@ -2,9 +2,11 @@
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Monaco;\f2\fmodern\fcharset0 Courier;
 }
 {\colortbl;\red255\green255\blue255;\red133\green0\blue135;\red52\green52\blue52;\red253\green134\blue8;
-\red0\green0\blue0;\red255\green255\blue255;}
+\red0\green0\blue0;\red255\green255\blue255;\red52\green52\blue52;\red0\green0\blue0;\red255\green255\blue255;
+}
 {\*\expandedcolortbl;;\cssrgb\c60000\c0\c60000;\cssrgb\c26667\c26667\c26667;\cssrgb\c100000\c60000\c0;
-\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;}
+\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c26667\c26667\c26667;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;
+}
 \paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
@@ -31,14 +33,20 @@ WHERE Nombre_par = "PPP"\
 \
 Consulta 3:\
 \
-SELECT juez.Nombre \
-FROM juez \
-INNER JOIN caso ON juez.Cod_juez = caso.Cod_juez \
-WHERE EXISTS \
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f1\fs26\fsmilli13120 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 SELECT\cf3 \strokec3 \'a0juez\cf4 \strokec4 .Nombre\
+\cf3 \strokec3 \'a0\cf2 \strokec2 FROM\cf3 \strokec3 \'a0juez\'a0\
+ INNER\'a0\cf2 \strokec2 JOIN\cf3 \strokec3 \'a0caso\'a0\cf2 \strokec2 ON\cf3 \strokec3 \'a0juez\cf4 \strokec4 .Cod_juez\cf3 \strokec3 \'a0=\'a0caso\cf4 \strokec4 .Cod_juez\cf3 \strokec3 \'a0\
+INNER\'a0\cf2 \strokec2 JOIN\cf3 \strokec3 \'a0caso_ciudadano\'a0\cf2 \strokec2 on\cf3 \strokec3 \'a0caso\cf4 \strokec4 .Cod_caso\cf3 \strokec3 \'a0=\'a0caso_ciudadano\cf4 \strokec4 .Cod_caso\cf3 \strokec3 INNER\'a0\cf2 \strokec2 JOIN\cf3 \strokec3 \'a0ciudadano\'a0\cf2 \strokec2 on\cf3 \strokec3 \'a0caso_ciudadano\cf4 \strokec4 .DNI\cf3 \strokec3 \'a0=\'a0ciudadano\cf4 \strokec4 .DNI\
+\cf3 \strokec3 \'a0\cf2 \strokec2 WHERE\cf3 \strokec3 \'a0ciudadano\cf4 \strokec4 .Nombre_par\cf3 \strokec3 \'a0=\'a0"PPP"\
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f2 \cf5 \cb6 \strokec5 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
-\cf0 (SELECT ciudadano.Nombre FROM ciudadano \
-INNER JOIN caso_ciudadano on ciudadano.DNI = caso_ciudadano.DNI \
-WHERE ciudadano.Nombre_par = "PPP")\
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 \cf0 Consulta 4:\
@@ -46,14 +54,14 @@ WHERE ciudadano.Nombre_par = "PPP")\
 \pard\pardeftab720\sl340\partightenfactor0
 
 \f1\fs26\fsmilli13120 \cf2 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 SELECT\cf3 \strokec3 \'a0\cf2 \strokec2 COUNT\cf3 \strokec3 (Nombre)\'a0\
-\cf2 \strokec2 FROM\cf3 \strokec3 \'a0caso\'a0\
-INNER\'a0\cf2 \strokec2 JOIN\cf3 \strokec3 \'a0caso_ciudadano\'a0\cf2 \strokec2 on\cf3 \strokec3 \'a0caso\cf4 \strokec4 .Cod_caso\cf3 \strokec3 \'a0=\'a0caso_ciudadano\cf4 \strokec4 .Cod_caso\cf3 \strokec3 \'a0\cf2 \strokec2 WHERE\cf3 \strokec3 \'a0caso_ciudadano\cf4 \strokec4 .DNI\cf3 \strokec3 \'a0=\
+SELECT\cf7 \'a0\cf2 COUNT\cf7 (Nombre)\'a0\
+\cf2 FROM\cf7 \'a0caso\'a0\
+INNER\'a0\cf2 JOIN\cf7 \'a0caso_ciudadano\'a0\cf2 on\cf7 \'a0caso\cf4 .Cod_caso\cf7 \'a0=\'a0caso_ciudadano\cf4 .Cod_caso\cf7 \'a0\cf2 WHERE\cf7 \'a0caso_ciudadano\cf4 .DNI\cf7 \'a0=\
 \pard\pardeftab720\sl340\qc\partightenfactor0
-\cf3 \'a0(\cf2 \strokec2 SELECT\cf3 \strokec3 \'a0DNI\'a0\
-\cf2 \strokec2 FROM\cf3 \strokec3 \'a0ciudadano\'a0\
-\cf2 \strokec2 WHERE\cf3 \strokec3 \'a0Nombre_par="PPP")\
+\cf7 \'a0(\cf2 SELECT\cf7 \'a0DNI\'a0\
+\cf2 FROM\cf7 \'a0ciudadano\'a0\
+\cf2 WHERE\cf7 \'a0Nombre_par="PPP")\
 \pard\pardeftab720\sl300\partightenfactor0
 
-\f2 \cf5 \cb6 \strokec5 \
+\f2 \cf8 \cb9 \
 }
